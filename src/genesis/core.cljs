@@ -51,6 +51,13 @@
              :checked (= (-> @app-state :input :ledger-type) :quorum)}]
     "Quorum"]])
 
+(defn normalize-address
+  [s]
+  (let [lower (str/lower-case s)]
+    (if (str/starts-with? lower "0x")
+      (subs lower 2)
+      lower)))
+
 (defn validators-input
   []
   (let [path [:input :validators]]
@@ -63,7 +70,8 @@
                        :on-change   #(swap! app-state
                                             assoc-in
                                             path
-                                            (str/split (-> % .-target .-value) #", ?"))}]]])))
+                                            (mapv normalize-address
+                                                  (str/split (-> % .-target .-value) #", ?")))}]]])))
 
 (defn extra-data
   [validators]
