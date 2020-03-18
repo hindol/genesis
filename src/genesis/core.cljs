@@ -39,17 +39,22 @@
 
 (defn ledger-input
   []
-  [:div.control
-   [:label.radio
-    [:input {:type    "radio"
-             :name    "ledger-type"
-             :checked (= (-> @app-state :input :ledger-type) :besu)}]
-    "Besu"]
-   [:label.radio
-    [:input {:type    "radio"
-             :name    "ledger-type"
-             :checked (= (-> @app-state :input :ledger-type) :quorum)}]
-    "Quorum"]])
+  [:div.field.is-horizontal
+   [:div.field-label.is-normal
+    [:label.label "Ledger Type"]]
+   [:div.field-body
+    [:div.field
+     [:p.control
+      [:label.radio
+       [:input {:type    "radio"
+                :name    "ledger-type"
+                :checked (= (-> @app-state :input :ledger-type) :besu)}]
+       "Besu"]
+      [:label.radio
+       [:input {:type    "radio"
+                :name    "ledger-type"
+                :checked (= (-> @app-state :input :ledger-type) :quorum)}]
+       "Quorum"]]]]])
 
 (defn normalize-address
   [s]
@@ -62,16 +67,19 @@
   []
   (let [path [:input :validators]]
     (fn []
-      [:div.field
-       [:label.label "Validators"]
-       [:div.control
-        [:input.input {:type        "text"
-                       :placeholder "0x01, 0x02, 0x03, ..."
-                       :on-change   #(swap! app-state
-                                            assoc-in
-                                            path
-                                            (mapv normalize-address
-                                                  (str/split (-> % .-target .-value) #", ?")))}]]])))
+      [:div.field.is-horizontal
+       [:div.field-label.is-normal
+        [:label.label "Validators"]]
+       [:div.field-body
+        [:div.field
+         [:p.control
+          [:input.input {:type        "text"
+                         :placeholder "0x01, 0x02, 0x03, ..."
+                         :on-change   #(swap! app-state
+                                              assoc-in
+                                              path
+                                              (mapv normalize-address
+                                                    (str/split (-> % .-target .-value) #", ?")))}]]]]])))
 
 (defn extra-data
   [validators]
@@ -112,11 +120,16 @@
 (defn start []
   (fetch-genesis-template)
   (rdom/render
-   [:div
-    [:form
-     [ledger-input]
-     [validators-input]]
-    [show-genesis]]
+   [:div.columns
+    [:div.column
+     [:div.columns
+      [:div.column
+       [:form
+        [ledger-input]
+        [validators-input]]]]
+     [:div.columns
+      [:div.column
+       [show-genesis]]]]]
    (. js/document (getElementById "app"))))
 
 (defn ^:export init []
