@@ -82,7 +82,7 @@
 (defn fetch-genesis-template
   []
   (go (let [validators (-> @app-state :input :validators)
-            response   (<! (http/get "/json/genesis.json"))]
+            response   (<! (http/get "json/genesis.json"))]
         (swap! app-state
                assoc-in
                [:output :genesis]

@@ -6,14 +6,14 @@
  ;; set an nrepl port for connection to a REPL.
  :nrepl        {:port 8777}
  :builds       {:app {:target     :browser
-                      :output-dir "public/js/compiled"
+                      :output-dir "docs/js/compiled"
                       :asset-path "/js/compiled"
                       :modules    {:main {:entries [genesis.core]}}
                       :devtools   ;; before live-reloading any code call this function
                       {:before-load genesis.core/stop
          ;; after live-reloading finishes call this function
                        :after-load  genesis.core/start
-         ;; serve the public directory over http at port 8700
-                       :http-root   "public"
+         ;; serve the docs directory over http at port 8700
+                       :http-root   "docs"
                        :http-port   8700
                        :preloads    [devtools.preload]}}}}
