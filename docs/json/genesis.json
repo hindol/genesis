@@ -1,18 +1,49 @@
 {
-    "config": {
-        "chainId": 1981,
-        "constantinoplefixblock": 0,
-        "ibft2": {
-            "blockperiodseconds": 5,
-            "epochlength": 30000,
-            "requesttimeoutseconds": 10
-        }
+    "besu": {
+        "config": {
+            "chainId": 1981,
+            "constantinoplefixblock": 0,
+            "ibft2": {
+                "blockperiodseconds": 5,
+                "epochlength": 30000,
+                "requesttimeoutseconds": 10
+            }
+        },
+        "nonce": "0x0",
+        "timestamp": "0x0",
+        "extraData": "",
+        "gasLimit": "0x0E0000000",
+        "difficulty": "0x1",
+        "mixHash": "0x63746963616c2062797a616e74696e65206661756c7420746f6c6572616e6365",
+        "alloc": {}
     },
-    "nonce": "0x0",
-    "timestamp": "0x0",
-    "extraData": "",
-    "gasLimit": "0x0E0000000",
-    "difficulty": "0x1",
-    "mixHash": "0x63746963616c2062797a616e74696e65206661756c7420746f6c6572616e6365",
-    "alloc": {}
+    "quorum": {
+        "alloc": {},
+        "coinbase": "0x0000000000000000000000000000000000000000",
+        "config": {
+            "homesteadBlock": 0,
+            "byzantiumBlock": 0,
+            "constantinopleBlock": 0,
+            "chainId": 10,
+            "eip150Block": 0,
+            "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "eip155Block": 0,
+            "eip158Block": 0,
+            "isQuorum": true,
+            "maxCodeSize": 35,
+            "maxCodeSizeChangeBlock": 0,
+            "istanbul": {
+                "epoch": 30000,
+                "policy": 0,
+                "ceil2Nby3Block": 0
+            }
+        },
+        "extraData": "",
+        "gasLimit": "0xE0000000",
+        "difficulty": "0x1",
+        "mixHash": "0x63746963616c2062797a616e74696e65206661756c7420746f6c6572616e6365",
+        "nonce": "0x0",
+        "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "timestamp": "0x00"
+    }
 }

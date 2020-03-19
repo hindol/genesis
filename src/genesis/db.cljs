@@ -6,4 +6,5 @@
   (r/atom
    {:input  {:ledger-type :besu
              :validators  []}
-    :output {:genesis nil}}))
+    :output {:genesis {:besu   nil
+                       :quorum nil}}}))
